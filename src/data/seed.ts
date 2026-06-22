@@ -1,0 +1,10 @@
+import { Product } from '@/src/models/inventory';
+
+export const products: Product[] = [
+  { id:'1', name:'Bouilloire électrique', brand:'Nordhaus', sku:'ELEC-2048', barcode:'376012340021', category:'Électroménager', quantity:18, minStock:6, price:79.90, location:'Dépôt A · B12', image:'https://images.unsplash.com/photo-1571552879083-e93b6ea70d1d?auto=format&fit=crop&w=800&q=80', color:'Inox', material:'Acier', updatedAt:'Il y a 12 min', status:'healthy', favorite:true },
+  { id:'2', name:'Set de casseroles 5 pcs', brand:'Kanso', sku:'KIT-5102', category:'Cuisine', quantity:4, minStock:8, price:139.00, location:'Dépôt A · C04', image:'https://images.unsplash.com/photo-1584990347449-a50a0d8fb3a2?auto=format&fit=crop&w=800&q=80', color:'Noir', material:'Aluminium', updatedAt:'Il y a 28 min', status:'low' },
+  { id:'3', name:'Vase sculptural Sora', brand:'Atelier 17', sku:'DEC-0821', category:'Déco', quantity:12, minStock:4, price:42.50, location:'Boutique · D08', image:'https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=800&q=80', color:'Crème', material:'Céramique', updatedAt:'Hier', status:'healthy' },
+  { id:'4', name:'Assiettes grès Noma', brand:'Ceram', sku:'VAI-4409', category:'Vaisselle', quantity:0, minStock:10, price:64.00, location:'Dépôt B · A02', image:'https://images.unsplash.com/photo-1603199506016-b9a594b593c0?auto=format&fit=crop&w=800&q=80', color:'Sauge', material:'Grès', updatedAt:'Hier', status:'out' },
+  { id:'5', name:'Robot pâtissier 5L', brand:'Nordhaus', sku:'ELEC-8012', category:'Électroménager', quantity:7, minStock:3, price:249.00, location:'Dépôt B · E11', image:'https://images.unsplash.com/photo-1594385208974-2e75f8d7bb48?auto=format&fit=crop&w=800&q=80', color:'Ivoire', material:'Métal', updatedAt:'Lun.', status:'healthy' },
+  { id:'6', name:'Lampe de table Halo', brand:'Luma', sku:'DEC-1940', category:'Déco', quantity:3, minStock:5, price:89.00, location:'Boutique · B03', image:'https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=800&q=80', color:'Sable', material:'Verre', updatedAt:'Lun.', status:'low' },
+];
