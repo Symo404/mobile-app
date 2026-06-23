@@ -7,18 +7,18 @@ import { palette, radius, shadow, spacing } from '@/src/theme/tokens';
 export function ScreenHeader({ eyebrow, title, action }: { eyebrow?: string; title: string; action?: ReactNode }) {
   return <View style={s.header}><View style={{ flex:1 }}>{eyebrow && <Text style={s.eyebrow}>{eyebrow}</Text>}<Text style={s.title}>{title}</Text></View>{action}</View>;
 }
-export function IconButton({ name, onPress, dark=false }: { name: keyof typeof Ionicons.glyphMap; onPress?:()=>void; dark?:boolean }) {
-  return <Pressable onPress={onPress} style={[s.iconButton, dark && { backgroundColor:'#28332E', borderColor:'#34433B' }]}><Ionicons name={name} size={20} color={dark ? palette.white : palette.ink}/></Pressable>;
+export function IconButton({ name, onPress, dark=false, accessibilityLabel }: { name: keyof typeof Ionicons.glyphMap; onPress?:()=>void; dark?:boolean; accessibilityLabel?:string }) {
+  return <Pressable accessibilityRole="button" accessibilityLabel={accessibilityLabel} onPress={onPress} style={({pressed})=>[s.iconButton, dark && { backgroundColor:'#28332E', borderColor:'#34433B' },pressed&&{opacity:.7}]}><Ionicons name={name} size={20} color={dark ? palette.white : palette.ink}/></Pressable>;
 }
 export function Pill({ label, tone='neutral', icon }: { label:string; tone?:'neutral'|'green'|'amber'|'red'; icon?:keyof typeof Ionicons.glyphMap }) {
   const tones = { neutral:[palette.paper,palette.muted], green:[palette.sageSoft,palette.sage], amber:[palette.amberSoft,palette.amber], red:[palette.redSoft,palette.red] } as const;
   return <View style={[s.pill,{backgroundColor:tones[tone][0]}]}>{icon && <Ionicons name={icon} size={13} color={tones[tone][1]}/>}<Text style={[s.pillText,{color:tones[tone][1]}]}>{label}</Text></View>;
 }
 export function Card({ children, style }: { children:ReactNode; style?:ViewStyle|ViewStyle[] }) { return <View style={[s.card,style]}>{children}</View>; }
-export function PrimaryButton({ label, icon, onPress, compact=false }: { label:string; icon?:keyof typeof Ionicons.glyphMap; onPress?:()=>void; compact?:boolean }) {
-  return <Pressable onPress={onPress} style={({pressed})=>[s.primary, compact && {paddingVertical:11,paddingHorizontal:14}, pressed&&{opacity:.85}]}>{icon&&<Ionicons name={icon} size={18} color={palette.white}/>}<Text style={s.primaryText}>{label}</Text></Pressable>;
+export function PrimaryButton({ label, icon, onPress, compact=false, disabled=false }: { label:string; icon?:keyof typeof Ionicons.glyphMap; onPress?:()=>void; compact?:boolean; disabled?:boolean }) {
+  return <Pressable accessibilityRole="button" accessibilityLabel={label} disabled={disabled} onPress={onPress} style={({pressed})=>[s.primary, compact && {paddingVertical:11,paddingHorizontal:14}, (pressed||disabled)&&{opacity:.55}]}>{icon&&<Ionicons name={icon} size={18} color={palette.white}/>}<Text style={s.primaryText}>{label}</Text></Pressable>;
 }
-export function SectionTitle({ title, action, onPress }: { title:string; action?:string; onPress?:()=>void }) { return <View style={s.section}><Text style={s.sectionTitle}>{title}</Text>{action&&<Pressable onPress={onPress}><Text style={s.sectionAction}>{action}</Text></Pressable>}</View>; }
+export function SectionTitle({ title, action, onPress }: { title:string; action?:string; onPress?:()=>void }) { return <View style={s.section}><Text style={s.sectionTitle}>{title}</Text>{action&&<Pressable accessibilityRole="button" accessibilityLabel={action} onPress={onPress}><Text style={s.sectionAction}>{action}</Text></Pressable>}</View>; }
 export function Progress({ value, color=palette.sage }: { value:number; color?:string }) { return <View style={s.track}><View style={[s.fill,{width:`${Math.min(100,value)}%`,backgroundColor:color}]}/></View>; }
 export function HeroGlow({ children }: { children:ReactNode }) { return <LinearGradient colors={['#1D2923','#111714']} start={{x:0,y:0}} end={{x:1,y:1}} style={s.hero}>{children}</LinearGradient>; }
 

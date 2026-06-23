@@ -8,7 +8,7 @@ export interface Product {
 }
 
 export interface StockMovement {
-  id: string; productId: string; type: 'in' | 'out' | 'transfer' | 'audit'; quantity: number; createdAt: string; note?: string;
+  id: string; productId: string; type: 'in' | 'out' | 'transfer' | 'audit'; quantity: number; createdAt: string; note?: string; fromLocation?: string; toLocation?: string;
 }
 
 export interface ExtractedProduct {
